@@ -1,6 +1,6 @@
 //"app"  é colocado pq é o valor do "id" atribuido a tag "div", assim o vue.js procura, no html, e executa o que tem que ser executado. 
 //Uma vez encontrado, o Vue.js assume o controle desse elemento e aplica a lógica e os dados definidos na instância Vue.
-    let PrimeiroApp = Vue.createApp({ // criando uma instancia na varaivel app, pois ela vai ter oda a lógica e os dados necessários para controlar e atualizar dinamicamente o elemento HTML associado.
+    let PrimeiroApp = Vue.createApp({ // criando uma instancia na varaivel app, pois ela vai ter toda a lógica e os dados necessários para controlar e atualizar dinamicamente o elemento HTML associado.
 
     data(){ //funcao que definira os dados reativos. 
             //sgf q as alteracoes nesses dados serao refletidos na interface do usuario.

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css"> <!--link USADO para vincular o arquivo css externo ao documento HTML-->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3"></script> <!--importando a biblioteca vue-->
+  <title>Vue.js Formulário</title>
+</head>
+
+<body>
+
+  <input type="checkbox" id="theme-switch" v-model="darkMode">
+  <label for="theme-switch">Modo Escuro</label>
+
+<div id="app" :class="{ 'dark-mode': darkMode }"> <!--o atributo app esta sendo utilizado pelo Vue para saber onde ele pode operar-->
+
+  <div class="form-container"> <!-- valor da classe esta sendo utilizada pelo CSS-->
+      <h2>Preencha o formulário:</h2>
+        <form> <!--tag para criar formulario-->
+            <label for="nome"> Nome: </label> <!-- etiqueta que nomeia algo, intuitivamnete, antes de um campo de entrada-->
+                                          <!--for do `label` e id de `input` sao os mesmo, por isso devem ter o mesmo valor-->
+                <input type="text" id="nome" v-model="aluno.nome"> <!--campo de entrada-->
+                                          <!--type: tipo de entrada q vai no campo, nesse caso: texto. Sera digitado textos. -->
+
+                                          <!--v-model: atributo relacionado ao Vue.js; ele conecta o valor do campo de entrada ao modelo de dados Vue.
+                                          nesse caso, aluno.nome eh o modelo de dados que vai armazenar o valor digitado no campo de entrada-->
+        <br> <!--quebra de linha-->
+        <label for="foto">Foto (URL):</label>
+        <input type="text" id="foto" v-model="aluno.foto">
+        <br>
+        <label for="ra">RA:</label>
+        <input type="text" id="ra" v-model="aluno.ra">
+        <br>
+        <label for="turma">Turma:</label>
+        <input type="text" id="turma" v-model="aluno.turma">
+        <br>
+        <label for="curso">Curso:</label>
+        <input type="text" id="curso" v-model="aluno.curso">
+        <br>
+      </form>
+    </div>
+    <div class="preview-container"> <!--classe usado no css-->
+      <h2>Visualização:</h2>
+
+      <div v-if="aluno.nome !== ''"> <!--div: cria um conteiner(ou divisao) -->
+                                    <!--v-if: remove ou adiciona o elemento html do dom com base na condicao fornecida. 
+                                    O elemento `div` sera exibido apenas se a condicao " aluno.nome !== '' "  for verdadeira -->
+                                    <!--aluno é um obj definido no Vue; nome é a vari que contem valor inserido pelo user no compo do form.-->
+        <h3>Nome:</h3>
+        <p>{{ aluno.nome }}</p> <!--aparecera o valor que o user escreveu. O vue, substituira o que precisa dentro das chaves duplas {{}}-->
+      </div> <!--encerra a div que engloba a parte de mostrar o nome digitado pelo user.-->
+      
+      <div v-if="aluno.foto !== ''">
+        <h3>Foto:</h3>
+        <img :src="aluno.foto" alt="Foto do aluno">
+      </div>
+      <div v-if="aluno.ra !== ''">
+        <h3>RA:</h3>
+        <p>{{ aluno.ra }}</p>
+      </div>
+      <div v-if="aluno.turma !== ''">
+        <h3>Turma:</h3>
+        <p>{{ aluno.turma }}</p>
+      </div>
+      <div v-if="aluno.curso !== ''">
+        <h3>Curso:</h3>
+        <p>{{ aluno.curso }}</p>
+      </div>
+    </div>
+  </div>
+  
+
+  <script src="app.js"></script> <!--o navegador olha e carrega e executa o codigo contido no arq app.js-->
+
+</body>
+</html>
